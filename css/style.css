@@ -29,6 +29,9 @@ a {
 strong {
 	font-weight: 900;
 }
+img {
+	-webkit-backface-visibility: hidden;
+}
 .button {
 	background: #FF5722;
 	color: #fff;
@@ -62,9 +65,9 @@ header {
 		.logo .fa {
 			display: block;
 			float: left;
-			width: 110px;
-			line-height: 110px;
-			font-size: 80px;
+			width: 60px;
+			line-height: 60px;
+			font-size: 40px;
 			text-align: center;
 			background: #FF5722;
 			color: #141A1D;
@@ -81,11 +84,13 @@ header {
 			letter-spacing: 2px;
 		}
 		.logo-slogan {
+			display: none;
 			font-size: 18px;
 			text-align: right;
 			letter-spacing: 0;
 		}
 		.logo-name {
+			display: none;
 			font-size: 57px;
 			line-height: 45px;
 			letter-spacing: -1px;
@@ -96,14 +101,14 @@ header {
 			float: left;
 		}
 		.menu ul li + li {
-			padding-left: 25px;		
+			padding-left: 15px;		
 		}
 			.menu ul li a {
 				text-decoration: none;
 				color: #637076;
 				text-transform: uppercase;
-				line-height: 110px;
-				font-size: 24px;
+				line-height: 60px;
+				font-size: 16px;
 			}
 			.menu ul li a:hover {
 				color: #FFF;
@@ -115,7 +120,7 @@ header {
 				display: none;
 			}
 			.search-button label .fa {
-				line-height: 110px;
+				line-height: 60px;
 				font-size: 30px;
 				padding: 0 40px 0 15px;
 			}
@@ -364,7 +369,7 @@ section.customers {
 		}
 		.customer-portrait {
 			position: absolute;
-			bottom: -20%;
+			bottom: -72px;
 			left: 50%;
 			border-radius: 50%;
 			margin-left: -72px;
@@ -403,6 +408,7 @@ section.gallery {
 			-ms-transition: opacity .4s ease-in;
 			-o-transition: opacity .4s ease-in;
 			transition: opacity .4s ease-in;
+		-webkit-backface-visibility: hidden;
 	}
 		.gallery-row a {
 			display: block;
@@ -470,17 +476,31 @@ section.statistics {
 		font-size: 14px;
 		font-weight: 800;
 		color: #FFF;
-		border: 1px solid #fff;
+		border: 1px solid;
+		border-color: #fff;
 		border-bottom: none;
 		padding: 13px 46px 13px 55px;
 		position: relative;
+		cursor:pointer;
 	}
 	.statistics .accordeon-list dd {
 		display: none;
 		font-size: 13px;
 		color: #FFF;
-		border: 1px solid #fff;
+		border: 1px solid;
+		border-color: #fff;
 		padding: 20px 46px 20px 55px;
+	}
+	.statistics .accordeon-list dt:last-of-type {
+		border-bottom: 1px solid;
+	}
+	.statistics .accordeon-list dt.active,
+	.statistics .accordeon-list dd.active {
+		border-color: #03a9f4;
+		color: #03a9f4;
+	}
+	.statistics .accordeon-list dd:last-of-type {
+		border-top: none;
 	}
 	.statistics .accordeon-list i.fa {
 		position: absolute;
@@ -648,6 +668,36 @@ section.contact-us {
 	        transition: color .4s ease-in, background-color .4s ease-in, border-color .4s ease-in;
 		cursor: pointer;
 	}
+	.copyright {
+		padding: 90px;
+		background-color: #263238;
+	}
+	.copyright p {
+		text-align: center;
+		color: #fff;
+		font-size: 18px;
+		font-family: 'Lato', Arial, sans-serif;
+	}
+	.copyright p a {
+		color: #3486cb;
+		text-decoration: none;
+	}
+	.copyright p a span {
+		color: #e00f19;
+	}
+	.copyright p a:hover {
+		text-decoration: underline;
+	}
+	.copyright p img {
+		padding: 0 5px;
+	}
+	.g-map {
+		height: 285px;
+	}
+	#map-canvas {
+		width: 100%;
+		height: 100%;
+	}
 @media (max-width: 480px) {
 	.customer-wrapper {
 		margin-top: 60px;
@@ -664,7 +714,7 @@ section.contact-us {
 }
 @media (min-width: 480px) {
 	.customer-wrapper {
-		margin-top: 60px;
+		margin-top: 80px;
 	}
 }
 @media (max-width:767px) {
@@ -681,6 +731,10 @@ section.contact-us {
 		padding-left: 30px;
 		padding-right: 30px;
 		cursor: pointer;
+	}
+	.slider .slide h1 {
+		padding-top: 50px;
+		font-size: 50px;
 	}
 }
 @media (max-width: 959px) {
@@ -702,6 +756,10 @@ section.contact-us {
 	.scales {
 		margin-top: 30px;	
 	}
+	.slide h1 {
+		padding-top: 100px;
+		font-size: 72px;
+	}
 }
 @media (min-width: 960px) {
 	.small-rock-offer img {
@@ -710,10 +768,36 @@ section.contact-us {
 	.rocks li img {
 		width: 100%;
 	}
+	
+}
+@media (max-width: 1119px) {
+	
 }
 @media (min-width: 1220px) {
 	.ba-container {
 		max-width: 1240px;	
+	}
+	.logo-name,
+	.logo-slogan {
+		display: block;
+	}
+	.logo .fa {
+		width: 110px;
+		line-height: 110px;
+		font-size: 80px;
+	}
+	.search-button label .fa {
+		line-height: 107px;
+	}
+	.menu ul li {
+		line-height: 110px;
+	}
+}
+@media (min-width: 1400px) {
+	.menu ul li a {
+		font-size: 24px;
+	}
+	.menu ul li + li {
+		padding-left: 25px;
 	}	
 }
-
