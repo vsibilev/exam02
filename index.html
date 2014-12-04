@@ -15,11 +15,13 @@
 	<link rel="stylesheet" href="css/style.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="js/jquery.cycle2.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.8"></script>
 	<!--[if lt IE 9]>
     	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 		<script>
+			//slider
 			$('.ba-slider').cycle({
 				prev: '.go-left',
 				next: '.go-right',
@@ -28,19 +30,40 @@
 				speed: '700',
 				timeout: '2000'
 			});
+
+			//maps
+			var	map;
+			function initialize() {
+  				var mapOptions = {
+    				zoom: 16,
+    				center: new google.maps.LatLng(49.588616, 34.551474)
+  				}
+  				var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  			var image = 'img/marker.png';
+  			var myLatLng = new google.maps.LatLng(49.587232, 34.551431);
+  			var someMarker = new google.maps.Marker({
+      			position: myLatLng,
+      			map: map,
+      			icon: image
+  			});
+			}
+			google.maps.event.addDomListener(window, 'load', initialize);
+
+			
 		</script>
 </head>
 <body>
 	<header>
 		<div class="header-container cf">
-			<a href="#" class="logo ba-float-left-xlarge cf">
+			<a href="#" class="logo ba-float-left-medium cf">
 				<i class="fa fa-tint"></i>
 				<span>
 					<span class="logo-slogan">Stone products</span>
 					<span class="logo-name">Strongest</span>
 				</span>
 			</a>
-			<nav class="menu ba-float-right-xlarge">
+			<nav class="menu ba-float-right-medium">
 				<ul>
 					<li><a href="#">Home</a></li>
 					<li><a href="#">About</a></li>
@@ -359,5 +382,34 @@ eget</span></a></li>
 			</form>
 		</div>
 	</section>
+	<footer>
+		<section class="copyright">
+			<p>Designed by <a href="#"><img src="img/tm-logo.png" alt="">Template<span>Monster</span>.com</a> &copy; 2015</p>
+		</section>
+		<section class="g-map">
+				<div id="map-canvas"></div>
+		</section>
+	</footer>
+	<script>
+	//accordeon
+	(function($) {
+    
+  		var allPanels = $('.accordeon-list > dd').hide();
+    
+  		$('.accordeon-list > dt').click(function() {
+    		$this = $(this);
+    	$target =  $this.next();
+    	if(!$target.hasClass('active')){
+        	allPanels.removeClass('active').slideUp();
+        	$target.addClass('active').slideDown();
+        	$('.accordeon-list > dt').removeClass('active');
+        	$this.addClass('active');
+      	}
+      
+    	return false;
+  		});
+
+	})(jQuery);
+	</script>
 </body>
 </html>
