@@ -16,42 +16,11 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="js/jquery.cycle2.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.8"></script>
+	<script src="js/script.js"></script>
 	<!--[if lt IE 9]>
     	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-		<script>
-			//slider
-			$('.ba-slider').cycle({
-				prev: '.go-left',
-				next: '.go-right',
-				slides: '> .slide',
-				fx: 'scrollHorz',
-				speed: '700',
-				timeout: '2000'
-			});
-
-			//maps
-			var	map;
-			function initialize() {
-  				var mapOptions = {
-    				zoom: 16,
-    				center: new google.maps.LatLng(49.588616, 34.551474)
-  				}
-  				var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-  			var image = 'img/marker.png';
-  			var myLatLng = new google.maps.LatLng(49.587232, 34.551431);
-  			var someMarker = new google.maps.Marker({
-      			position: myLatLng,
-      			map: map,
-      			icon: image
-  			});
-			}
-			google.maps.event.addDomListener(window, 'load', initialize);
-
-			
-		</script>
 </head>
 <body>
 	<header>
@@ -73,10 +42,13 @@
 					<li><a href="#">Gallery</a></li>
 					<li><a href="#">Contacts</a></li>
 					<li class="search-button">
-						<label><input type="checkbox"><i class="fa fa-search"></i></label>
+						<i class="fa fa-search"></i>
 					</li>
 				</ul>
 			</nav>
+			<form action="#" name="search" id="search">
+				<input type="text" name="search-text" class="search-input" placeholder="Search...">
+			</form>
 		</div>
 	</header>
 	<section class="slider">
@@ -390,26 +362,5 @@ eget</span></a></li>
 				<div id="map-canvas"></div>
 		</section>
 	</footer>
-	<script>
-	//accordeon
-	(function($) {
-    
-  		var allPanels = $('.accordeon-list > dd').hide();
-    
-  		$('.accordeon-list > dt').click(function() {
-    		$this = $(this);
-    	$target =  $this.next();
-    	if(!$target.hasClass('active')){
-        	allPanels.removeClass('active').slideUp();
-        	$target.addClass('active').slideDown();
-        	$('.accordeon-list > dt').removeClass('active');
-        	$this.addClass('active');
-      	}
-      
-    	return false;
-  		});
-
-	})(jQuery);
-	</script>
 </body>
 </html>
