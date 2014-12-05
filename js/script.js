@@ -16,7 +16,7 @@ function initialize() {
 		center: new google.maps.LatLng(49.588616, 34.551474)
 	}
 	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-	var image = '../img/marker.png';
+	var image = './img/marker.png';
 	var myLatLng = new google.maps.LatLng(49.587232, 34.551431);
 	var someMarker = new google.maps.Marker({
 		position: myLatLng,
